@@ -42,6 +42,7 @@ AgroSat-GlobalSolution/
 ├── frontend/           # Interface do Utilizador (React/Vite)
 ├── database/           # Scripts SQL (Criação, Constraints e Mock de Dados)
 └── docs/               # Diagrama de Classes (UML), Modelo Relacional e Wireframes
+```
 
 ## 🚀 Como Executar o Projeto (Guia do Avaliador)
 1. Backend (Motor Preditivo em Java)
