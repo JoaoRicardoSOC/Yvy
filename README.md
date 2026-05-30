@@ -1,5 +1,3 @@
-
-![Status](https://img.shields.io/badge/Status-Concluído-success?style=for-the-badge)
 ![Global Solution](https://img.shields.io/badge/FIAP-Global_Solution-ed145b?style=for-the-badge)
 ![Java](https://img.shields.io/badge/Java-POO_%7C_DDD-007396?style=for-the-badge&logo=java&logoColor=white)
 ![React](https://img.shields.io/badge/React-Frontend-61DAFB?style=for-the-badge&logo=react&logoColor=black)
