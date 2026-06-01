@@ -9,7 +9,7 @@
 ---
 
 ## 🎯 O Projeto
-A assimetria de informações climáticas é um dos maiores causadores de perdas nas safras de pequenos e médios agricultores. O **AgroSat** é uma plataforma preditiva que cruza dados agronômicos de diferentes culturas com informações meteorológicas orbitais para recomendar a melhor janela de plantio, mitigando riscos de seca ou excesso de chuvas.
+A assimetria de informações climáticas é um dos maiores causadores de perdas nas safras de pequenos e médios agricultores. O **Yvy** é uma plataforma preditiva que cruza dados agronômicos de diferentes culturas com informações meteorológicas orbitais para recomendar a melhor janela de plantio, mitigando riscos de seca ou excesso de chuvas.
 
 ### 🌟 Diferenciais e Vantagens
 * **Arquitetura Limpa (Clean Architecture):** Backend em Java rigorosamente estruturado com princípios de Domain-Driven Design (DDD) e SOLID. As regras de negócio estão blindadas dentro de entidades ricas, isolando o domínio da infraestrutura.
