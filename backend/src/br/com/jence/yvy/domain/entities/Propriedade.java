@@ -19,7 +19,6 @@ public class Propriedade {
         this.nome = nome;
         this.codigoIbgeCidade = codigoIbgeCidade;
         this.estado = estado;
-        this.areasPlantio.add(areaPlantio);
         this.adicionarAreaPlantio(areaPlantio);
     }
 

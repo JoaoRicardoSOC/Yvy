@@ -1,6 +1,7 @@
 package br.com.jence.yvy.infrastructure.repositories;
 
 import br.com.jence.yvy.domain.entities.Produtor;
+import br.com.jence.yvy.domain.entities.TipoPerfil; // Importando o nosso Enum blindado
 import br.com.jence.yvy.domain.repositories.IProdutorRepository;
 
 import java.util.ArrayList;
@@ -12,7 +13,8 @@ public class ProdutorRepositoryMock implements IProdutorRepository {
     private List<Produtor> produtores = new ArrayList<>();
 
     public ProdutorRepositoryMock() {
-        produtores.add(new Produtor(1L, "João Ricardo", "joao.ricardo@yvy.com.br", "senhaFortissima123", "ENGENHEIRO_MASTER"));
+        // CORREÇÃO: Usando o Enum TipoPerfil.AGRONOMO que definimos na Opção 1
+        produtores.add(new Produtor(1L, "João Ricardo", "joao.ricardo@yvy.com.br", "senhaFortissima123", TipoPerfil.AGRONOMO));
     }
 
     @Override

@@ -16,7 +16,7 @@ public class Produtor {
 
     public Produtor() {};
 
-    public Produtor(Long id, String nome, String email, String senha, String tipoPerfil) {
+    public Produtor(Long id, String nome, String email, String senha, TipoPerfil tipoPerfil) {
         this.id = id;
         this.nome = nome;
         this.email = email;
@@ -77,11 +77,11 @@ public class Produtor {
         this.senha = senha;
     }
 
-    public String getTipoPerfil() {
+    public TipoPerfil getTipoPerfil() {
         return tipoPerfil;
     }
 
-    public void setTipoPerfil(String tipoPerfil) {
+    public void setTipoPerfil(TipoPerfil tipoPerfil) {
         this.tipoPerfil = tipoPerfil;
     }
 
