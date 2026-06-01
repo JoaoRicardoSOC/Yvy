@@ -1,4 +1,4 @@
-package br.com.jence.projeto.domain.entities;
+package br.com.jence.yvy.domain.entities;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -20,6 +20,7 @@ public class Propriedade {
         this.codigoIbgeCidade = codigoIbgeCidade;
         this.estado = estado;
         this.areasPlantio.add(areaPlantio);
+        this.adicionarAreaPlantio(areaPlantio);
     }
 
 

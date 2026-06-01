@@ -1,4 +1,4 @@
-package br.com.jence.projeto.domain.entities;
+package br.com.jence.yvy.domain.entities;
 
 
 import java.util.ArrayList;
@@ -10,8 +10,8 @@ public class Produtor {
     private String nome;
     private String email;
     private String senha;
-    private String tipoPerfil; //  enum?
-    private List<Propriedade> propriedadesList = new ArrayList<>();
+    private TipoPerfil tipoPerfil;
+    private List<br.com.jence.yvy.domain.entities.Propriedade> propriedadesList = new ArrayList<>();
 
 
     public Produtor() {};

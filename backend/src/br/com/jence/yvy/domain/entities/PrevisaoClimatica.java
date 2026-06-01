@@ -1,4 +1,4 @@
-package br.com.jence.projeto.domain.entities;
+package br.com.jence.yvy.domain.entities;
 
 import java.time.YearMonth;
 

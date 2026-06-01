@@ -1,4 +1,4 @@
-package br.com.jence.projeto.domain.entities;
+package br.com.jence.yvy.domain.entities;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -9,7 +9,7 @@ public class AnalisePreditiva {
     private Cultura cultura;
     private LocalDateTime dataProcessamento;
     private LocalDate melhorDataInicioPlantio;
-    private LocalDate dataPrevistaColheira;
+    private LocalDate dataPrevistaColheita;
     private String riscoClimaticoCalculado;
     private Double rendimentoEstimadoSacas;
     private String statusAnalise;
@@ -17,13 +17,13 @@ public class AnalisePreditiva {
 
     public AnalisePreditiva() {};
 
-    public AnalisePreditiva(Long id, AreaPlantio areaPlantio, Cultura cultura, LocalDateTime dataProcessamento, LocalDate melhorDataInicioPlantio, LocalDate dataPrevistaColheira, String riscoClimaticoCalculado, Double rendimentoEstimadoSacas, String statusAnalise) {
+    public AnalisePreditiva(Long id, AreaPlantio areaPlantio, Cultura cultura, LocalDateTime dataProcessamento, LocalDate melhorDataInicioPlantio, LocalDate dataPrevistaColheita, String riscoClimaticoCalculado, Double rendimentoEstimadoSacas, String statusAnalise) {
         this.id = id;
         this.areaPlantio = areaPlantio;
         this.cultura = cultura;
         this.dataProcessamento = dataProcessamento;
         this.melhorDataInicioPlantio = melhorDataInicioPlantio;
-        this.dataPrevistaColheira = dataPrevistaColheira;
+        this.dataPrevistaColheita = dataPrevistaColheita;
         this.riscoClimaticoCalculado = riscoClimaticoCalculado;
         this.rendimentoEstimadoSacas = rendimentoEstimadoSacas;
         this.statusAnalise = statusAnalise;
@@ -86,12 +86,12 @@ public class AnalisePreditiva {
         this.melhorDataInicioPlantio = melhorDataInicioPlantio;
     }
 
-    public LocalDate getDataPrevistaColheira() {
-        return dataPrevistaColheira;
+    public LocalDate getDataPrevistaColheita() {
+        return dataPrevistaColheita;
     }
 
-    public void setDataPrevistaColheira(LocalDate dataPrevistaColheira) {
-        this.dataPrevistaColheira = dataPrevistaColheira;
+    public void setDataPrevistaColheita(LocalDate dataPrevistaColheita) {
+        this.dataPrevistaColheita = dataPrevistaColheita;
     }
 
     public String getRiscoClimaticoCalculado() {
@@ -127,7 +127,7 @@ public class AnalisePreditiva {
                 ", cultura=" + cultura +
                 ", dataProcessamento=" + dataProcessamento +
                 ", melhorDataInicioPlantio=" + melhorDataInicioPlantio +
-                ", dataPrevistaColheira=" + dataPrevistaColheira +
+                ", dataPrevistaColheita=" + dataPrevistaColheita +
                 ", riscoClimaticoCalculado='" + riscoClimaticoCalculado + '\'' +
                 ", rendimentoEstimadoSacas=" + rendimentoEstimadoSacas +
                 ", statusAnalise='" + statusAnalise + '\'' +

@@ -1,4 +1,4 @@
-package br.com.jence.projeto.domain.entities;
+package br.com.jence.yvy.domain.entities;
 
 public class AreaPlantio {
     private Long id;
@@ -6,7 +6,7 @@ public class AreaPlantio {
     private String tipoSolo;
     private Boolean possuiIrrigacao;
     private Double phSolo;
-    private Cultura ultimaCulturaPlantada = null;
+    private br.com.jence.yvy.domain.entities.Cultura ultimaCulturaPlantada = null;
 
 
     public AreaPlantio() {};
@@ -21,6 +21,7 @@ public class AreaPlantio {
 
 
     public Double calcularPotencialRetencaoAgua() {
+        if (this.tipoSolo == null) return 0.0; // Trava de segurança inserida
         Double potencial = 0.0;
 
         // Cada tipo de solo retém água de forma diferente

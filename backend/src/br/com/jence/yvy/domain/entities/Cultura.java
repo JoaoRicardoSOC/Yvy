@@ -1,4 +1,4 @@
-package br.com.jence.projeto.domain.entities;
+package br.com.jence.yvy.domain.entities;
 
 public class Cultura {
     private Long id;
@@ -24,11 +24,8 @@ public class Cultura {
 
 
     public Boolean isTemperaturaAdequada(Double temperatura) {
-        if (temperatura >= temperaturaIdealMin && temperatura <= temperaturaIdealMax) {
-            return true;
-        }
-
-        return false;
+        if (temperatura == null || temperaturaIdealMin == null || temperaturaIdealMax == null) return false;
+        return temperatura >= temperaturaIdealMin && temperatura <= temperaturaIdealMax;
     };
 
 
