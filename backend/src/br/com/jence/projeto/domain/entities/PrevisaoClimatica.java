@@ -10,6 +10,17 @@ public class PrevisaoClimatica {
     private Double temperaturaMedia;
     private Boolean riscoGeada;
 
+    public PrevisaoClimatica() {
+    }
+
+    public PrevisaoClimatica(Long id, String codigoIbgeCidade, YearMonth mesAno, Double volumeChuvaMm, Double temperaturaMedia, Boolean riscoGeada) {
+        this.id = id;
+        this.codigoIbgeCidade = codigoIbgeCidade;
+        this.mesAno = mesAno;
+        this.volumeChuvaMm = volumeChuvaMm;
+        this.temperaturaMedia = temperaturaMedia;
+        this.riscoGeada = riscoGeada;
+    }
 
     public Long getId() {
         return id;

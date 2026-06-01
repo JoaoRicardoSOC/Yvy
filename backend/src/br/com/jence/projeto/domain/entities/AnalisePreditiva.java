@@ -31,21 +31,23 @@ public class AnalisePreditiva {
 
 
     public Double calcularRendimentoFinal() {
-        if (rendimentoEstimadoSacas == null || riscoClimaticoCalculado == null) {
+        if (this.cultura == null || this.areaPlantio == null || this.riscoClimaticoCalculado == null) {
             return 0.0;
         }
 
+        double rendimentoMaximo = this.cultura.getRendimentoBaseSacasHectare() * this.areaPlantio.getTamanhoHectares();
+
         switch (riscoClimaticoCalculado.toLowerCase()) {
             case "baixo":
-                return rendimentoEstimadoSacas * 1.0;  // sem perda
+                return rendimentoMaximo * 1.0;
             case "medio":
-                return rendimentoEstimadoSacas * 0.85;  // 15% de perda
+                return rendimentoMaximo * 0.85;
             case "alto":
-                return rendimentoEstimadoSacas * 0.65;  // 35% de perda
+                return rendimentoMaximo * 0.65;
             default:
-                return rendimentoEstimadoSacas;
+                return rendimentoMaximo;
         }
-    };
+    }
 
 
     public Long getId() {

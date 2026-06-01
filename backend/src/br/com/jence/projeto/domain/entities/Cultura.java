@@ -24,7 +24,7 @@ public class Cultura {
 
 
     public Boolean isTemperaturaAdequada(Double temperatura) {
-        if (temperatura >= temperaturaIdealMin && temperatura >= temperaturaIdealMax) {
+        if (temperatura >= temperaturaIdealMin && temperatura <= temperaturaIdealMax) {
             return true;
         }
 
