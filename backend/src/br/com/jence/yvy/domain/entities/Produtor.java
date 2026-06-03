@@ -11,7 +11,7 @@ public class Produtor {
     private String email;
     private String senha;
     private TipoPerfil tipoPerfil;
-    private List<br.com.jence.yvy.domain.entities.Propriedade> propriedadesList = new ArrayList<>();
+    private List<Propriedade> propriedadesList = new ArrayList<>();
 
 
     public Produtor() {};

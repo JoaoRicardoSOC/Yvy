@@ -6,7 +6,7 @@ public class AreaPlantio {
     private String tipoSolo;
     private Boolean possuiIrrigacao;
     private Double phSolo;
-    private br.com.jence.yvy.domain.entities.Cultura ultimaCulturaPlantada = null;
+    private Cultura ultimaCulturaPlantada = null;
 
 
     public AreaPlantio() {};
