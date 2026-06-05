@@ -345,7 +345,6 @@ public class Main {
                 scanner.nextLine();
                 option = -1;
             }
-        } while (option != 0);
-        return null;
+        } while (true);
     }
 }
