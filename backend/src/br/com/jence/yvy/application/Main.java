@@ -1,20 +1,13 @@
 package br.com.jence.yvy.application;
 
 import br.com.jence.yvy.application.services.AnalisePreditivaService;
-import br.com.jence.yvy.domain.entities.AreaPlantio;
-import br.com.jence.yvy.domain.entities.Cultura;
+import br.com.jence.yvy.domain.entities.*;
 
-import br.com.jence.yvy.domain.entities.Produtor;
-import br.com.jence.yvy.domain.entities.Propriedade;
 import br.com.jence.yvy.infrastructure.repositories.CulturaRepositoryMock;
 import br.com.jence.yvy.infrastructure.repositories.PrevisaoClimaticaRepositoryMock;
 import br.com.jence.yvy.infrastructure.repositories.ProdutorRepositoryMock;
 
-import java.util.InputMismatchException;
-import java.util.List;
-
-import java.util.Optional;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -33,6 +26,7 @@ public class Main {
         // 1.4 "LOGGANDO" O USUARIO
         Produtor usuario = null;
         System.out.println("======== INICIALIZANDO O SISTEMA =======");
+        System.out.println(" (Fase de testes: use o ID 1)");
         System.out.print(" Digite seu ID de Produtor: ");
         usuario = menuUsuario(sc, produtorRepo);
         System.out.println();
@@ -81,19 +75,21 @@ public class Main {
                         System.out.print("Digite o ID da Área de Plantio: ");
                         Long idArea = sc.nextLong();
                         sc.nextLine();
-                        Optional<AreaPlantio> areaPlantio = usuario.getPropriedadesList()
+                        Optional<Map.Entry<Propriedade, AreaPlantio>> resultado = usuario.getPropriedadesList()
+                                .stream()
+                                .flatMap(prop -> prop.getAreasPlantio()
                                         .stream()
-                                                .flatMap(propriedade -> propriedade.getAreasPlantio().stream()
-                                                        .filter(area -> area.getId().equals(idArea)))
-                                                        .findFirst();
-                        AreaPlantio areaEncontrada;
-                        if (areaPlantio.isPresent()) {
-                            areaEncontrada = areaPlantio.get();
-                        }
-                        else {
-                            System.out.println("Área não Encontrada! Tente novamente.");
+                                        .filter(area -> area.getId().equals(idArea))
+                                        .map(area -> Map.entry(prop, area)))
+                                .findFirst();
+                        if (resultado.isEmpty()) {
+                            System.out.println("Área não encontrada! Tente novamente.");
                             break;
                         }
+
+                        Propriedade propriedadeEncontrada = resultado.get().getKey();
+                        AreaPlantio areaEncontrada = resultado.get().getValue();
+                        String codigoIbge = propriedadeEncontrada.getCodigoIbgeCidade();
 
                         System.out.print("Digite o ID da Cultura: ");
                         Long idCultura = sc.nextLong();
@@ -108,14 +104,21 @@ public class Main {
                             break;
                         }
 
-                        System.out.println("Digite o Número que Corresponde a Cidade na Tabela: ");
-                        String codigoIbge = selecionarMunicipio(sc);
-                        if (codigoIbge == null) {
-                            System.out.println("Seleção de município cancelada.");
-                            break;
-                        }
+                        AnalisePreditiva analise = motorPreditivo.gerarRecomendacao(areaEncontrada, culturaEncontrada, codigoIbge);
 
-                        System.out.println(motorPreditivo.gerarRecomendacao(areaEncontrada, culturaEncontrada, codigoIbge));
+                        System.out.println("\n========================================");
+                        System.out.println("   🚀 RESULTADO DA ANÁLISE PREDITIVA   ");
+                        System.out.println("========================================");
+                        System.out.println(" 📍 Propriedade : " + propriedadeEncontrada.getNome() + " - " + propriedadeEncontrada.getEstado());
+                        System.out.println(" 🌱 Cultura     : " + culturaEncontrada.getNome());
+                        System.out.println(" 📅 Processado  : " + analise.getDataProcessamento());
+                        System.out.println("----------------------------------------");
+                        System.out.println(" ⚠️  Risco       : " + analise.getRiscoClimaticoCalculado());
+                        System.out.println(" 📆 Início      : " + analise.getMelhorDataInicioPlantio());
+                        System.out.println(" 🌾 Colheita    : " + analise.getDataPrevistaColheita());
+                        System.out.println(" 💰 Rendimento  : " + analise.getRendimentoEstimadoSacas() + " sacas");
+                        System.out.println(" ✅ Status      : " + analise.getStatusAnalise());
+                        System.out.println("========================================");
 
                         break;
 
@@ -205,8 +208,14 @@ public class Main {
             double hectares = scanner.nextDouble();
             scanner.nextLine();
 
-            System.out.print("Tipo de solo (argiloso/siltoso/arenoso): ");
-            String tipoSolo = scanner.nextLine();
+            String tipoSolo;
+            do {
+                System.out.print("Tipo de solo (argiloso/siltoso/arenoso): ");
+                tipoSolo = scanner.nextLine().trim().toLowerCase();
+                if (!tipoSolo.equals("argiloso") && !tipoSolo.equals("siltoso") && !tipoSolo.equals("arenoso")) {
+                    System.out.println("[Erro] Tipo inválido! Digite argiloso, siltoso ou arenoso.");
+                }
+            } while (!tipoSolo.equals("argiloso") && !tipoSolo.equals("siltoso") && !tipoSolo.equals("arenoso"));
 
             System.out.print("A área possui irrigação? (Sim/Não): ");
             String irrigacaoInput = scanner.nextLine().trim();
@@ -288,6 +297,7 @@ public class Main {
         }
     }
 
+    // Usado apenas no cadastro de nova fazenda
     public static String selecionarMunicipio(Scanner scanner) {
         int option = 0;
 
