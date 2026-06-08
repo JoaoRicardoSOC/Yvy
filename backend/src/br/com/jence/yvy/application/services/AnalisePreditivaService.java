@@ -44,7 +44,7 @@ public class AnalisePreditivaService {
 
             boolean tempAdequada = cultura.isTemperaturaAdequada(previsao.getTemperaturaMedia());
             Double necessidadeHidrica = cultura.getNecessidadeHidricaMm() != null ? cultura.getNecessidadeHidricaMm() : 0.0;
-            boolean chuvaAdequada = previsao.getVolumeChuvaMm() >= (cultura.getNecessidadeHidricaMm() * 0.7);
+            boolean chuvaAdequada = previsao.getVolumeChuvaMm() >= (necessidadeHidrica * 0.7);
 
             if (tempAdequada) {
                 if (chuvaAdequada) {
