@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  
+  /* Matte Earthy Green Palette */
+  --color-agro-50: #f4f5f0;
+  --color-agro-100: #e4e7dd;
+  --color-agro-500: #5c703b;
+  --color-agro-600: #4d5e31;
+  --color-agro-700: #3d4b27;
+  --color-agro-800: #2e381d;
+  --color-agro-900: #1f2513;
+  --color-agro-950: #0f130a;
+  
+  /* Matte Black / Professional Dark */
+  --color-background-dark: #121212;
+  --color-surface-dark: #1c1c1c;
+}
+
+@utility glass {
+  background-color: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+@utility glass-active {
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(92, 112, 59, 0.5); /* agro-500 tint */
+}
+
+body {
+  background-color: var(--color-background-dark);
+  color: #e5e5e5;
+  margin: 0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
